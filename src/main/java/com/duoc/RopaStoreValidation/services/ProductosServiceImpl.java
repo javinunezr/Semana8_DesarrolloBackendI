@@ -1,15 +1,18 @@
 package com.duoc.RopaStoreValidation.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.duoc.RopaStoreValidation.models.Productos;
 import com.duoc.RopaStoreValidation.repositories.ProductosRepository;
 
 @Service
-public class ProductosServiceImpl {
-    private final ProductosRepository productosRepository = new ProductosRepository();
+public class ProductosServiceImpl implements ProductosService{
+    @Autowired
+    private ProductosRepository productosRepository;
 
     @Override
     public List<Productos> getAllProductos() {
@@ -17,23 +20,28 @@ public class ProductosServiceImpl {
     }
 
     @Override
-    public List<Productos> listarPorIdProductoMenorAMayor() {
-        return productosRepository.listarPorIdProductoMenorAMayor();
+    public Productos createProducto(Productos productos) {
+        productosRepository.save(productos);
     }
 
     @Override
-    public void agregarAListaProductos(Productos productos) {
-        productosRepository.agregarAListaProductos(productos);
+    public Productos updateProducto(Long id, Productos productos){
+        if(productostRepository.existsById(id)){
+            productos.setId(id);
+            return productosRepository.save(productos);
+        }   else {
+                return null;
+        }
     }
 
     @Override
-    public Productos findById(Long id) {
+    public Optional<Productos> getProductoById(Long id) {
         return productosRepository.findById(id);
     }
 
     @Override
-    public boolean deleteById(Long id) {
-        return productosRepository.deleteById(id);
+    public void deleteProducto(Long id) {
+        productosRepository.deleteById(id);
     }
     
 }

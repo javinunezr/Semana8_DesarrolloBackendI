@@ -1,15 +1,18 @@
 package com.duoc.RopaStoreValidation.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.duoc.RopaStoreValidation.models.Clientes;
 import com.duoc.RopaStoreValidation.repositories.ClientesRepository;
 
 @Service
-public class ClientesServiceImpl {
-    private final ClientesRepository clientesRepository = new ClientesRepository();
+public class ClientesServiceImpl implements ClientesService{
+    @Autowired
+    private ClientesRepository clientesRepository;
 
     @Override
     public List<Clientes> getAllClientes() {
@@ -17,23 +20,28 @@ public class ClientesServiceImpl {
     }
 
     @Override
-    public List<Clientes> listarPorIdMenorAMayor() {
-        return clientesRepository.listarPorIdMenorAMayor();
+    public Clientes createCliente(Clientes clientes) {
+        clientesRepository.save(clientes);
     }
 
     @Override
-    public void agregarAListaCliente(Clientes clientes) {
-        clientesRepository.agregarAListaCliente(clientes);
+    public Clientes updateCliente(Long id, Clientes clientes){
+        if(clientestRepository.existsById(id)){
+            clientes.setId(id);
+            return clientesRepository.save(clientes);
+        }   else {
+                return null;
+        }
     }
 
     @Override
-    public Clientes findById(Long id) {
+    public Optional<Clientes> getClientesById(Long id) {
         return clientesRepository.findById(id);
     }
 
     @Override
-    public boolean deleteById(Long id) {
-        return clientesRepository.deleteById(id);
+    public void deleteCliente(Long id) {
+        clientesRepository.deleteById(id);
     }
 
 }

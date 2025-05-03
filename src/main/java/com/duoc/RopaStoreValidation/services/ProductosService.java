@@ -1,16 +1,14 @@
 package com.duoc.RopaStoreValidation.services;
 
 import java.util.List;
-
-import org.springframework.stereotype.Service;
-
+import java.util.Optional;
 import com.duoc.RopaStoreValidation.models.Productos;
 
 @Service
 public interface ProductosService {
-    List<Productos> getAllPedidoList();
-    List<Productos> listarPorIdProductoMenorAMayor();
-    void agregarAListaProductos(Productos productos);    
-    Productos findById(Long id); 
-    boolean deleteById(Long id);    
+    List<Productos> getAllProductos();
+    Productos createProducto(Productos productos);    
+    Productos updateProducto(Long id, Productos productos);
+    Optional<Productos> getProductoById(Long id); 
+    void deleteProducto(Long id);    
 }
