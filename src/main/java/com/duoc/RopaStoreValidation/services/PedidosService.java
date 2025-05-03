@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import com.duoc.RopaStoreValidation.models.Pedidos;
 
-@Service
 public interface PedidosService {
     List<Pedidos> getAllPedidos();
     Pedidos createPedido(Pedidos pedidos);   

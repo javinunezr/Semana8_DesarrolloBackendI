@@ -21,13 +21,13 @@ public class ProductosServiceImpl implements ProductosService{
 
     @Override
     public Productos createProducto(Productos productos) {
-        productosRepository.save(productos);
+        return productosRepository.save(productos);
     }
 
     @Override
     public Productos updateProducto(Long id, Productos productos){
-        if(productostRepository.existsById(id)){
-            productos.setId(id);
+        if(productosRepository.existsById(id)){
+            productos.setIdProducto(id);
             return productosRepository.save(productos);
         }   else {
                 return null;

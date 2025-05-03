@@ -21,13 +21,13 @@ public class PedidosServiceImpl implements PedidosService{
 
     @Override
     public Pedidos createPedido(Pedidos pedidos) {
-        pedidosRepository.save(pedidos);
+        return pedidosRepository.save(pedidos);
     }
 
     @Override
     public Pedidos updatePedido(Long id, Pedidos pedidos){
-        if(pedidostRepository.existsById(id)){
-            pedidos.setId(id);
+        if(pedidosRepository.existsById(id)){
+            pedidos.setIdPedido(id);
             return pedidosRepository.save(pedidos);
         }   else {
                 return null;

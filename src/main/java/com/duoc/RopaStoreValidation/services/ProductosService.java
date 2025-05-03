@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import com.duoc.RopaStoreValidation.models.Productos;
 
-@Service
 public interface ProductosService {
     List<Productos> getAllProductos();
     Productos createProducto(Productos productos);    
