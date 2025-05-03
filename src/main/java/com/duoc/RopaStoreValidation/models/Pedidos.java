@@ -19,16 +19,22 @@ public class Pedidos {
     @SequenceGenerator(name="profile_info_seq_pedidos",sequenceName = "profile_info_seq_pedidos",allocationSize = 1,initialValue = 100)
     private Long idPedido;
 
+    @NotNull
     @Column(name = "idCliente", nullable = false) // Obligatorio
     private Long idCliente;
 
+    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fechaPedido", nullable = false) // Obligatorio
     private Date fechaPedido;
 
+    @NotNull
     @Column(name = "totalPedido", nullable = false) // Obligatorio
+    @Min(1)
     private int totalPedido;
 
+    @NotNull
     @Column(name = "estadoPedido", nullable = false) // Obligatorio
+    @Size(min=1,max=15)
     private String estadoPedido;
 }

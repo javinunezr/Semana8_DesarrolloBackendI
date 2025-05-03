@@ -20,18 +20,28 @@ public class Clientes {
     @SequenceGenerator(name="profile_info_seq_clientes",sequenceName = "profile_info_seq_clientes",allocationSize = 1,initialValue = 1000)
     private Long idCliente;
 
+    @NotNull
     @Column(name = "rutCliente", nullable = false, unique = true) // Obligatorio y único
+    @Size(min=5,max=15)
     private String rutCliente;
 
+    @NotNull    
     @Column(name = "nombreCliente", nullable = false) // Obligatorio
+    @Size(min=5,max=15)
     private String nombreCliente;
 
+    @NotNull   
     @Column(name = "correoCliente", nullable = false) // Obligatorio
+    @Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
     private String correoCliente;
 
+    @NotNull
     @Column(name = "telefonoCliente", nullable = false) // Obligatorio
+    @Min(1)
     private int telefonoCliente;
 
+    @NotNull
     @Column(name = "direccionCliente", nullable = false) // Obligatorio
+    @Size(min=5,max=50)
     private String direccionCliente;
 }
