@@ -50,7 +50,6 @@ public class RestControllerPedidos {
     @DeleteMapping("/{id}")
     public void detelePedido(@PathVariable Long id){
         pedidosService.detelePedido(id);
-    }
-    
+    }    
 }
 

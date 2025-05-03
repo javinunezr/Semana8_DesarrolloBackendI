@@ -50,7 +50,6 @@ public class RestControllerProductos {
     @DeleteMapping("/{id}")
     public void deleteProducto(@PathVariable Long id){
         productosService.deleteProducto(id);
-    }
-    
+    }    
 }
 

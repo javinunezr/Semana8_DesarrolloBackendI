@@ -51,5 +51,4 @@ public class RestControllerClientes {
     public void deleteCliente(@PathVariable Long id){
         clientesService.deleteCliente(id);
     }
-
 }

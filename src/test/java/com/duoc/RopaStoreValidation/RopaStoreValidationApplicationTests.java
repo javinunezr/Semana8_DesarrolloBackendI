@@ -8,6 +8,5 @@ class RopaStoreValidationApplicationTests {
 
 	@Test
 	void contextLoads() {
-	}
-
+	}	
 }
