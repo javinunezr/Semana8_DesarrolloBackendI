@@ -2,13 +2,21 @@ package com.duoc.RopaStoreValidation.models;
 
 import jakarta.persistence.*;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data // Esta notacion incluye metodos: Setters, Getters & toString
+@AllArgsConstructor // Indicamos que la clase tendra unc ontructor con todos los parametros
+@NoArgsConstructor // Indicamos que la clase tendra un constructor sin parametros
+
 @Entity
 @Table(name = "Pedidos")
 public class Pedidos {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idPedido")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profile_info_seq_pedidos")
+    @SequenceGenerator(name="profile_info_seq_pedidos",sequenceName = "profile_info_seq_pedidos",allocationSize = 1,initialValue = 100)
     private Long idPedido;
 
     @Column(name = "idCliente", nullable = false) // Obligatorio
@@ -23,46 +31,4 @@ public class Pedidos {
 
     @Column(name = "estadoPedido", nullable = false) // Obligatorio
     private String estadoPedido;
-
-    // Getters y setters
-
-    public Long getIdPedido() {
-        return idPedido;
-    }
-
-    public void setIdPedido(Long idPedido) {
-        this.idPedido = idPedido;
-    }
-
-    public Long getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(Long idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public Date getFechaPedido() {
-        return fechaPedido;
-    }
-
-    public void setFechaPedido(Date fechaPedido) {
-        this.fechaPedido = fechaPedido;
-    }
-
-    public int getTotalPedido() {
-        return totalPedido;
-    }
-
-    public void setTotalPedido(int totalPedido) {
-        this.totalPedido = totalPedido;
-    }
-
-    public String getEstadoPedido() {
-        return estadoPedido;
-    }
-
-    public void setEstadoPedido(String estadoPedido) {
-        this.estadoPedido = estadoPedido;
-    }
 }

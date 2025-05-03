@@ -2,13 +2,21 @@ package com.duoc.RopaStoreValidation.models;
 
 import jakarta.persistence.*;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data // Esta notacion incluye metodos: Setters, Getters & toString
+@AllArgsConstructor // Indicamos que la clase tendra unc ontructor con todos los parametros
+@NoArgsConstructor // Indicamos que la clase tendra un constructor sin parametros
+
 @Entity
 @Table(name = "Productos")
 public class Productos {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idProducto")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profile_info_seq_productos")
+    @SequenceGenerator(name="profile_info_seq_productos",sequenceName = "profile_info_seq_productos",allocationSize = 1,initialValue = 10000)
     private Long idProducto;
 
     @Column(name = "nombreProducto", nullable = false) // Obligatorio
@@ -25,54 +33,4 @@ public class Productos {
 
     @Column(name = "sucursalId", nullable = false) // Obligatorio
     private Long sucursalId;
-
-    // Getters y setters
-
-    public Long getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(Long idProducto) {
-        this.idProducto = idProducto;
-    }
-
-    public String getNombreProducto() {
-        return nombreProducto;
-    }
-
-    public void setNombreProducto(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
-    }
-
-    public int getPrecioProducto() {
-        return precioProducto;
-    }
-
-    public void setPrecioProducto(int precioProducto) {
-        this.precioProducto = precioProducto;
-    }
-
-    public String getCategoriaProducto() {
-        return categoriaProducto;
-    }
-
-    public void setCategoriaProducto(String categoriaProducto) {
-        this.categoriaProducto = categoriaProducto;
-    }
-
-    public int getStockProducto() {
-        return stockProducto;
-    }
-
-    public void setStockProducto(int stockProducto) {
-        this.stockProducto = stockProducto;
-    }
-
-    public Long getSucursalId() {
-        return sucursalId;
-    }
-
-    public void setSucursalId(Long sucursalId) {
-        this.sucursalId = sucursalId;
-    }
 }
