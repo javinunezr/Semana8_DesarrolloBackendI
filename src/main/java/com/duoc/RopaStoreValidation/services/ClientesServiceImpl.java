@@ -10,7 +10,7 @@ import com.duoc.RopaStoreValidation.models.Clientes;
 import com.duoc.RopaStoreValidation.repositories.ClientesRepository;
 
 @Service
-public class ClientesServiceImpl implements ClientesService{
+public class ClientesServiceImpl implements ClientesService {
     @Autowired
     private ClientesRepository clientesRepository;
 
@@ -22,15 +22,16 @@ public class ClientesServiceImpl implements ClientesService{
     @Override
     public Clientes createCliente(Clientes clientes) {
         clientesRepository.save(clientes);
+        return clientes;
     }
 
     @Override
-    public Clientes updateCliente(Long id, Clientes clientes){
-        if(clientestRepository.existsById(id)){
+    public Clientes updateCliente(Long id, Clientes clientes) {
+        if (clientestRepository.existsById(id)) {
             clientes.setId(id);
             return clientesRepository.save(clientes);
-        }   else {
-                return null;
+        } else {
+            return null;
         }
     }
 
