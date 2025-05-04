@@ -2,6 +2,8 @@ package com.duoc.RopaStoreValidation.models;
 
 import java.util.Date;
 
+import java.util.Date;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
