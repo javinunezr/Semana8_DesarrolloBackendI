@@ -1,12 +1,17 @@
 package com.duoc.RopaStoreValidation.models;
 
-import jakarta.persistence.*;
+import java.sql.Date;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data // Esta notacion incluye metodos: Setters, Getters & toString
+// Esta notacion incluye metodos: Setters, Getters & toString
+@Data
 @AllArgsConstructor // Indicamos que la clase tendra unc ontructor con todos los parametros
 @NoArgsConstructor // Indicamos que la clase tendra un constructor sin parametros
 
@@ -16,7 +21,7 @@ public class Pedidos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profile_info_seq_pedidos")
-    @SequenceGenerator(name="profile_info_seq_pedidos",sequenceName = "profile_info_seq_pedidos",allocationSize = 1,initialValue = 100)
+    @SequenceGenerator(name = "profile_info_seq_pedidos", sequenceName = "profile_info_seq_pedidos", allocationSize = 1, initialValue = 100)
     private Long idPedido;
 
     @NotNull
@@ -35,6 +40,6 @@ public class Pedidos {
 
     @NotNull
     @Column(name = "estadoPedido", nullable = false) // Obligatorio
-    @Size(min=1,max=15)
+    @Size(min = 1, max = 15)
     private String estadoPedido;
 }

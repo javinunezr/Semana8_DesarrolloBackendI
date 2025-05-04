@@ -1,7 +1,10 @@
 package com.duoc.RopaStoreValidation.models;
 
 import jakarta.persistence.*;
-
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,23 +17,22 @@ import lombok.NoArgsConstructor;
 @Table(name = "Clientes")
 public class Clientes {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profile_info_seq_clientes")
-    @SequenceGenerator(name="profile_info_seq_clientes",sequenceName = "profile_info_seq_clientes",allocationSize = 1,initialValue = 1000)
+    @SequenceGenerator(name = "profile_info_seq_clientes", sequenceName = "profile_info_seq_clientes", allocationSize = 1, initialValue = 1000)
     private Long idCliente;
 
     @NotNull
     @Column(name = "rutCliente", nullable = false, unique = true) // Obligatorio y único
-    @Size(min=5,max=15)
+    @Size(min = 5, max = 15)
     private String rutCliente;
 
-    @NotNull    
+    @NotNull
     @Column(name = "nombreCliente", nullable = false) // Obligatorio
-    @Size(min=5,max=15)
+    @Size(min = 5, max = 15)
     private String nombreCliente;
 
-    @NotNull   
+    @NotNull
     @Column(name = "correoCliente", nullable = false) // Obligatorio
     @Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
     private String correoCliente;
@@ -42,6 +44,6 @@ public class Clientes {
 
     @NotNull
     @Column(name = "direccionCliente", nullable = false) // Obligatorio
-    @Size(min=5,max=50)
+    @Size(min = 5, max = 50)
     private String direccionCliente;
 }
