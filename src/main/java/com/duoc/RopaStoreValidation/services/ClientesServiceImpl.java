@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.duoc.RopaStoreValidation.models.Clientes;
@@ -39,13 +40,13 @@ public class ClientesServiceImpl implements ClientesService {
 
     // Actualiza un cliente
     @Override
-    public Clientes updateCliente(Long id, Clientes clientes) {
-        if (clientesRepository.existsById(id)) {
-            clientes.setIdCliente(id);
-            return clientesRepository.save(clientes);
-        } else {
-            return null;
-        }
+    public Clientes updateCliente(Long id, Clientes clientesActualizados) {
+        return clientesRepository.findById(id)
+                .map(clienteExistente -> {
+                    BeanUtils.copyProperties(clientesActualizados, clienteExistente, "idCliente");
+                    return clientesRepository.save(clienteExistente);
+                })
+                .orElseThrow(() -> new RuntimeException("Cliente no encontrado con ID: " + id));
     }
 
     // Elimina un cliente
