@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -22,33 +20,32 @@ import com.duoc.RopaStoreValidation.services.ClientesService;
 @RequestMapping("/clientes")
 @CrossOrigin(origins = "*")
 
-
 public class RestControllerClientes {
     @Autowired
     private ClientesService clientesService;
 
     @GetMapping
-    public List<Clientes> getAllClientes(){
+    public List<Clientes> getAllClientes() {
         return clientesService.getAllClientes();
     }
 
     @PostMapping
-    public Clientes createCliente(@RequestBody Clientes clientes) {
-        return clientesService.createCliente(clientes);
+    public void createCliente(@RequestBody Clientes clientes) {
+        clientesService.createCliente(clientes);
     }
-    
+
     @PutMapping("/{id}")
     public Clientes updateCliente(@PathVariable Long id, @RequestBody Clientes clientes) {
         return clientesService.updateCliente(id, clientes);
     }
-        
+
     @GetMapping("/{id}")
     public Optional<Clientes> getClientesById(@PathVariable Long id) {
         return clientesService.getClientesById(id);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCliente(@PathVariable Long id){
+    public void deleteCliente(@PathVariable Long id) {
         clientesService.deleteCliente(id);
     }
 }
