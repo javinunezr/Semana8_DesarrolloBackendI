@@ -10,9 +10,14 @@ import com.duoc.RopaStoreValidation.models.Pedidos;
 import com.duoc.RopaStoreValidation.repositories.PedidosRepository;
 
 @Service
-public class PedidosServiceImpl implements PedidosService{
-    @Autowired
+public class PedidosServiceImpl implements PedidosService {
+
     private PedidosRepository pedidosRepository;
+
+    @Autowired
+    public PedidosServiceImpl(PedidosRepository pedidosRepository) {
+        this.pedidosRepository = pedidosRepository;
+    }
 
     @Override
     public List<Pedidos> getAllPedidos() {
@@ -25,12 +30,12 @@ public class PedidosServiceImpl implements PedidosService{
     }
 
     @Override
-    public Pedidos updatePedido(Long id, Pedidos pedidos){
-        if(pedidostRepository.existsById(id)){
+    public Pedidos updatePedido(Long id, Pedidos pedidos) {
+        if (pedidostRepository.existsById(id)) {
             pedidos.setId(id);
             return pedidosRepository.save(pedidos);
-        }   else {
-                return null;
+        } else {
+            return null;
         }
     }
 

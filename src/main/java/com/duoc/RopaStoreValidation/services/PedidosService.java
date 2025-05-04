@@ -3,11 +3,8 @@ package com.duoc.RopaStoreValidation.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.stereotype.Service;
-
 import com.duoc.RopaStoreValidation.models.Pedidos;
 
-@Service
 public interface PedidosService {
 
     public List<Pedidos> getAllPedidos();
