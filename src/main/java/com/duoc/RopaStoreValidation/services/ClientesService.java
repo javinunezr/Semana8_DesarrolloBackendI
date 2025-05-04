@@ -9,13 +9,13 @@ import com.duoc.RopaStoreValidation.models.Clientes;
 
 @Service
 public interface ClientesService {
-    List<Clientes> getAllClientes();
+    public void createCliente(Clientes clientes);
 
-    Clientes createCliente(Clientes clientes);
+    public List<Clientes> getAllClientes();
 
-    Clientes updateCliente(Long id, Clientes clientes);
+    public Optional<Clientes> getClientesById(Long id);
 
-    Optional<Clientes> getClientesById(Long id);
+    public Clientes updateCliente(Long id, Clientes clientes);
 
-    void deleteCliente(Long id);
+    public void deleteCliente(Long id);
 }
