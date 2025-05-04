@@ -1,6 +1,6 @@
 package com.duoc.RopaStoreValidation.models;
 
-import java.sql.Date;
+import java.util.Date;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
