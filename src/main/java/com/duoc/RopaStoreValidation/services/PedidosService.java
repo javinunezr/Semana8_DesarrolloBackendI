@@ -9,13 +9,14 @@ import com.duoc.RopaStoreValidation.models.Pedidos;
 
 @Service
 public interface PedidosService {
-    List<Pedidos> getAllPedidos();
 
-    Pedidos createPedido(Pedidos pedidos);
+    public List<Pedidos> getAllPedidos();
 
-    Pedidos updatePedido(Long id, Pedidos pedidos);
+    public void createPedido(Pedidos pedidos);
 
-    Optional<Pedidos> getPedidoById(Long id);
+    public Pedidos updatePedido(Long id, Pedidos pedidos);
 
-    void detelePedido(Long id);
+    public Optional<Pedidos> getPedidoById(Long id);
+
+    public void detelePedido(Long id);
 }
