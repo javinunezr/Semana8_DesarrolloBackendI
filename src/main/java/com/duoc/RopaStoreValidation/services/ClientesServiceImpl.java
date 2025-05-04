@@ -11,37 +11,47 @@ import com.duoc.RopaStoreValidation.repositories.ClientesRepository;
 
 @Service
 public class ClientesServiceImpl implements ClientesService {
-    @Autowired
+
     private ClientesRepository clientesRepository;
 
+    @Autowired
+    public ClientesServiceImpl(ClientesRepository clientesRepository) {
+        this.clientesRepository = clientesRepository;
+    }
+
+    // Crea clientes
+    @Override
+    public void createCliente(Clientes clientes) {
+        clientesRepository.save(clientes);
+    }
+
+    // Obtiene toda la lista de clientes
     @Override
     public List<Clientes> getAllClientes() {
         return clientesRepository.findAll();
     }
 
+    // Obtiene el id de un cliente en particular
     @Override
-    public Clientes createCliente(Clientes clientes) {
-        clientesRepository.save(clientes);
-        return clientes;
+    public Optional<Clientes> getClientesById(Long id) {
+        return clientesRepository.findById(id);
     }
 
+    // Actualiza un cliente
     @Override
     public Clientes updateCliente(Long id, Clientes clientes) {
-        if (clientestRepository.existsById(id)) {
-            clientes.setId(id);
+        if (clientesRepository.existsById(id)) {
+            clientes.setIdCliente(id);
             return clientesRepository.save(clientes);
         } else {
             return null;
         }
     }
 
-    @Override
-    public Optional<Clientes> getClientesById(Long id) {
-        return clientesRepository.findById(id);
-    }
-
+    // Elimina un cliente
     @Override
     public void deleteCliente(Long id) {
         clientesRepository.deleteById(id);
     }
+
 }
