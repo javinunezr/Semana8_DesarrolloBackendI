@@ -6,13 +6,13 @@ import java.util.Optional;
 import com.duoc.RopaStoreValidation.models.Productos;
 
 public interface ProductosService {
-    List<Productos> getAllProductos();
+    public List<Productos> getAllProductos();
 
-    Productos createProducto(Productos productos);
+    public void createProducto(Productos productos);
 
-    Productos updateProducto(Long id, Productos productos);
+    public Productos updateProducto(Long id, Productos productos);
 
-    Optional<Productos> getProductoById(Long id);
+    public Optional<Productos> getProductoById(Long id);
 
-    void deleteProducto(Long id);
+    public void deleteProducto(Long id);
 }
