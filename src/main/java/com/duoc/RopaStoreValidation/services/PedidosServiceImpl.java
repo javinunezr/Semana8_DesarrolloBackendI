@@ -19,31 +19,36 @@ public class PedidosServiceImpl implements PedidosService {
         this.pedidosRepository = pedidosRepository;
     }
 
+    // Obtiene toda la lista de pedidos
     @Override
     public List<Pedidos> getAllPedidos() {
         return pedidosRepository.findAll();
     }
 
+    // Crea un pedido
     @Override
-    public Pedidos createPedido(Pedidos pedidos) {
+    public void createPedido(Pedidos pedidos) {
         pedidosRepository.save(pedidos);
     }
 
+    // Actualiza un pedido
     @Override
     public Pedidos updatePedido(Long id, Pedidos pedidos) {
-        if (pedidostRepository.existsById(id)) {
-            pedidos.setId(id);
+        if (pedidosRepository.existsById(id)) {
+            pedidos.setIdPedido(id);
             return pedidosRepository.save(pedidos);
         } else {
             return null;
         }
     }
 
+    // Busca un pedido por id
     @Override
     public Optional<Pedidos> getPedidoById(Long id) {
         return pedidosRepository.findById(id);
     }
 
+    // Elimina un pedido por id
     @Override
     public void detelePedido(Long id) {
         pedidosRepository.deleteById(id);
