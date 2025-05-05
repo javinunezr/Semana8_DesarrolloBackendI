@@ -1,5 +1,8 @@
 package com.duoc.RopaStoreValidation.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -46,4 +49,8 @@ public class Clientes {
     @Column(name = "direccionCliente", nullable = false) // Obligatorio
     @Size(min = 5, max = 50)
     private String direccionCliente;
+
+    // Atributo para manejar la relacion entre un cliente y uno o muchos pedidos
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Pedidos> pedidos = new ArrayList<>();
 }

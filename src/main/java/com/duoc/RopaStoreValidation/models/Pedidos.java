@@ -42,4 +42,9 @@ public class Pedidos {
     @Column(name = "estadoPedido", nullable = false) // Obligatorio
     @Size(min = 1, max = 15)
     private String estadoPedido;
+
+    // Atributo para relacionar muchos pedidos a un cliente
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idCliente", nullable = false)
+    private Clientes cliente;
 }
