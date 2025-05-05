@@ -1,6 +1,8 @@
 package com.duoc.RopaStoreValidation.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,9 +31,13 @@ public class RestControllerPedidos {
         return pedidosService.getAllPedidos();
     }
 
-    @PostMapping
-    public void createPedido(@RequestBody Pedidos pedidos) {
-        pedidosService.createPedido(pedidos);
+    @PostMapping("/cliente/{clienteId}")
+    public ResponseEntity<Pedidos> createPedido(
+            @PathVariable Long clienteId,
+            @RequestBody Pedidos pedido) {
+
+        Pedidos nuevoPedido = pedidosService.createPedido(clienteId, pedido);
+        return ResponseEntity.status(HttpStatus.CREATED).body(nuevoPedido);
     }
 
     @PutMapping("/{id}")
