@@ -16,4 +16,8 @@ public interface PedidosService {
     public Optional<Pedidos> getPedidoById(Long id);
 
     public void detelePedido(Long id);
+
+    // Metodo creado en repository para traer todos los pedidos de un cliente segun
+    // id
+    List<Pedidos> getPedidosByClienteId(Long idCliente);
 }

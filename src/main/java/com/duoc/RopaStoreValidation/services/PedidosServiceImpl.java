@@ -61,4 +61,9 @@ public class PedidosServiceImpl implements PedidosService {
     public void detelePedido(Long id) {
         pedidosRepository.deleteById(id);
     }
+
+    @Override
+    public List<Pedidos> getPedidosByClienteId(Long idCliente) {
+        return pedidosRepository.findByIdCliente(idCliente);
+    }
 }
