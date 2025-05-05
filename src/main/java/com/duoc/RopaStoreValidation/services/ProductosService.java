@@ -15,4 +15,7 @@ public interface ProductosService {
     public Optional<Productos> getProductoById(Long id);
 
     public void deleteProducto(Long id);
+
+    // Metodo para buscar traer todos los productos de un inventario
+    List<Productos> obtenerProductosPorSucursal(Long sucursalId);
 }
