@@ -10,5 +10,7 @@ import com.duoc.RopaStoreValidation.models.Pedidos;
 @Repository
 public interface PedidosRepository extends JpaRepository<Pedidos, Long> {
     // Metodo que traera todos los pedidos de un cliente segun su id
-    List<Pedidos> findByIdCliente(Long idCliente);
+    // List<Pedidos> findByIdCliente(Long idCliente);
+    List<Pedidos> findByClienteIdCliente(Long idCliente);
+
 }

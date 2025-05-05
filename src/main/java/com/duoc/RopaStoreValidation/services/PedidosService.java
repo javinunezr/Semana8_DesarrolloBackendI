@@ -19,5 +19,5 @@ public interface PedidosService {
 
     // Metodo creado en repository para traer todos los pedidos de un cliente segun
     // id
-    List<Pedidos> getPedidosByClienteId(Long idCliente);
+    List<Pedidos> findByClienteIdCliente(Long idCliente);
 }

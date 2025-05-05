@@ -2,6 +2,9 @@ package com.duoc.RopaStoreValidation.models;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -24,9 +27,9 @@ public class Pedidos {
     @SequenceGenerator(name = "profile_info_seq_pedidos", sequenceName = "profile_info_seq_pedidos", allocationSize = 1, initialValue = 100)
     private Long idPedido;
 
-    @NotNull
-    @Column(name = "idCliente", nullable = false) // Obligatorio
-    private Long idCliente;
+    // @NotNull
+    // @Column(name = "idCliente", nullable = false) // Obligatorio
+    // private Long idCliente;
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
@@ -46,5 +49,6 @@ public class Pedidos {
     // Atributo para relacionar muchos pedidos a un cliente
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idCliente", nullable = false)
+    @JsonBackReference
     private Clientes cliente;
 }

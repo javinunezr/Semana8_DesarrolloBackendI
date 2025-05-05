@@ -63,7 +63,7 @@ public class PedidosServiceImpl implements PedidosService {
     }
 
     @Override
-    public List<Pedidos> getPedidosByClienteId(Long idCliente) {
-        return pedidosRepository.findByIdCliente(idCliente);
+    public List<Pedidos> findByClienteIdCliente(Long idCliente) {
+        return pedidosRepository.findByClienteIdCliente(idCliente);
     }
 }

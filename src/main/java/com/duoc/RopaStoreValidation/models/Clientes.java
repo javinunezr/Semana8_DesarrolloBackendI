@@ -3,6 +3,8 @@ package com.duoc.RopaStoreValidation.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -52,5 +54,6 @@ public class Clientes {
 
     // Atributo para manejar la relacion entre un cliente y uno o muchos pedidos
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Pedidos> pedidos = new ArrayList<>();
 }
