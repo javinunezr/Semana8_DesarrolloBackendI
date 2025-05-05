@@ -44,6 +44,12 @@ public class RestControllerProductos {
         return productosService.getProductoById(id);
     }
 
+    // Metodo que traera todo el inventario de una sucursal
+    @GetMapping("/sucursal/{id}")
+    public List<Productos> obtenerProductosPorSucursal(@PathVariable Long id) {
+        return productosService.obtenerProductosPorSucursal(id);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteProducto(@PathVariable Long id) {
         productosService.deleteProducto(id);
