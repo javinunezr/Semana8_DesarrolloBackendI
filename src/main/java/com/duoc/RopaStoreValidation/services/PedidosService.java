@@ -9,7 +9,7 @@ public interface PedidosService {
 
     public List<Pedidos> getAllPedidos();
 
-    public void createPedido(Pedidos pedidos);
+    public Pedidos createPedido(Long clienteId, Pedidos pedido);
 
     public Pedidos updatePedido(Long id, Pedidos pedidos);
 
