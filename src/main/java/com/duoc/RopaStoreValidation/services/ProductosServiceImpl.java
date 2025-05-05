@@ -52,4 +52,9 @@ public class ProductosServiceImpl implements ProductosService {
     public void deleteProducto(Long id) {
         productosRepository.deleteById(id);
     }
+
+    @Override
+    public List<Productos> obtenerProductosPorSucursal(Long sucursalId) {
+        return productosRepository.findBySucursalId(sucursalId);
+    }
 }
