@@ -54,4 +54,15 @@ public class RestControllerPedidos {
     public void detelePedido(@PathVariable Long id) {
         pedidosService.detelePedido(id);
     }
+
+    // Llamara los pedidos que tenga un cliente en particular
+    // En tu RestController de Pedidos
+    @GetMapping("/cliente/{idCliente}")
+    public ResponseEntity<List<Pedidos>> getPedidosByClienteId(@PathVariable Long idCliente) {
+        List<Pedidos> pedidos = pedidosService.getPedidosByClienteId(idCliente);
+        if (pedidos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(pedidos);
+    }
 }
