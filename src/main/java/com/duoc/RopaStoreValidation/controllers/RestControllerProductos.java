@@ -17,7 +17,7 @@ import com.duoc.RopaStoreValidation.models.Productos;
 import com.duoc.RopaStoreValidation.services.ProductosService;
 
 @RestController
-@RequestMapping("/productos")
+@RequestMapping("/api/productos")
 @CrossOrigin(origins = "*")
 
 public class RestControllerProductos {

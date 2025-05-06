@@ -34,7 +34,7 @@ public class Clientes {
 
     @NotNull
     @Column(name = "nombreCliente", nullable = false) // Obligatorio
-    @Size(min = 5, max = 15)
+    @Size(min = 5, max = 30)
     private String nombreCliente;
 
     @NotNull

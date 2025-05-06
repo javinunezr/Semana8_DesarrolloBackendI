@@ -43,6 +43,6 @@ public class Productos {
 
     @NotNull
     @Column(name = "sucursalId", nullable = false) // Obligatorio
-    @Size(min = 1, max = 15)
+    // @Size(min = 1, max = 15)
     private Long sucursalId;
 }
